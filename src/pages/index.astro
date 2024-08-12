@@ -1,0 +1,45 @@
+---
+import RootLayout from '@layouts/root/index.astro'
+import { Load } from '@components/client-directives/load'
+import { Idle } from '@components/client-directives/idle'
+import { Visible } from '@components/client-directives/visible'
+import { Only } from '@components/client-directives/only'
+---
+
+<RootLayout title="Home">
+  <main class="main w-screen">
+    <div class="col-content mb-5">
+      <h1 class="text-4xl text-center mb-1 lg:mb-0">Astro's component framework directives</h1>
+
+      <p>Astro can integrate with other frameworks such as: React, Svelte, Vue, Quick, and so on.</p>
+
+      <p>We only need integrate them with some directives which are: Load, Idle, Visible and Only directives.</p>
+
+      <p>All of them, load, idle and visible directives, render their HTML on the server, but their JavaScript logic is triggered when the conditions are met.</p>
+    </div>
+
+    <Load client:load />
+    <Idle client:idle />
+    <Visible client:visible />
+    <Only client:only="react" />
+  </main>
+</RootLayout>
+
+<style>
+  .main {
+    --container-gap: 7vw;
+    margin-block: 2rem;
+    display: grid;
+    row-gap: 1rem;
+    grid-template-columns:
+      [full-width-start] var(--container-gap)
+      [content-start] 1fr [content-end] var(--container-gap) [full-width-end];
+  }
+
+  @media (width >= 1024px) {
+    .main {
+      --container-gap: 30vw;
+      margin-block: 3rem;
+    }
+  }
+</style>
