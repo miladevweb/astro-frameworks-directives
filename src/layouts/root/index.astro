@@ -1,4 +1,6 @@
 ---
+import LenisProvider from '@components/lenis'
+
 interface Props {
   title: string
 }
@@ -27,6 +29,8 @@ interface Props {
   </head>
 
   <body class="bg-primary text-primary overflow-x-hidden text-pretty">
-    <slot />
+    <LenisProvider client:load>
+      <slot />
+    </LenisProvider>
   </body>
 </html>
